@@ -28,9 +28,16 @@
         tools:srcCompat = "@tools:sample/avatars"/>
 
     <Button
-        android:id="@+id/btnSubmit"
+    android:id="@+id/btnSubmit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Submit"/>
+
+    <Button
+        android:id="@+id/btnSignOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Submit"/>
+        android:layout_marginTop="100dp"
+        android:hint="Sign Out"/>
 
 </LinearLayout>
