@@ -1,6 +1,7 @@
 package com.example.instatobi.Fragments;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -82,7 +83,7 @@ public class ComposeFragment extends Fragment {
             public void onClick(View v) {
                 ParseUser.logOut();
                 if (ParseUser.getCurrentUser() == null) {
-                    //getContext().goLoginActivity();
+                    goLoginActivity();
                 }
             }
         });
@@ -93,8 +94,6 @@ public class ComposeFragment extends Fragment {
                 launchCamera();
             }
         });
-
-        //queryPosts();
 
         btnSubmit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -186,20 +185,9 @@ public class ComposeFragment extends Fragment {
             }
         });
     }
-
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting posts");
-                    return;
-                }
-                for (Post post: posts) {
-                    Log.i(TAG, "Post: "+ post.getDescription() + " username " + post.getUser());
-                }
-            }
-        });
+    private void goLoginActivity() {
+        Intent i = new Intent(getContext(), LoginActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 }
